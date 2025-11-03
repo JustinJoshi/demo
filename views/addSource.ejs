@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyGraf - Add Data Source</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="addSource.css">
+    
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <div class="logo-icon">📊</div>
+                    <span>MyGraf</span>
+                </div>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <div class="nav-section">
+                    <div class="nav-section-title">Main</div>
+                    <a href="/dashboard" class="nav-item">
+                        <span>🏠</span>
+                        <span>Dashboard</span>
+                    </a>
+                    <a href="#" class="nav-item">
+                        <span>📈</span>
+                        <span>Metrics</span>
+                    </a>
+                    <a href="#" class="nav-item">
+                        <span>📊</span>
+                        <span>Analytics</span>
+                    </a>
+                </div>
+                
+                <div class="nav-section">
+                    <div class="nav-section-title">Data Sources</div>
+                    <a href="#" class="nav-item">
+                        <span>🔌</span>
+                        <span>Connections</span>
+                    </a>
+                    <a href="/addSource" class="nav-item active">
+                        <span>➕</span>
+                        <span>Add Source</span>
+                    </a>
+                </div>
+                
+                <div class="nav-section">
+                    <div class="nav-section-title">Settings</div>
+                    <a href="#" class="nav-item">
+                        <span>🔔</span>
+                        <span>Alerts</span>
+                    </a>
+                    <a href="#" class="nav-item">
+                        <span>⚙️</span>
+                        <span>Settings</span>
+                    </a>
+                </div>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="top-nav">
+                <div class="breadcrumb">
+                    <span>MyGraf</span>
+                    <span>/</span>
+                    <span>Data Sources</span>
+                    <span>/</span>
+                    <span>Add Source</span>
+                </div>
+                
+                <div class="top-nav-right">
+                    <input type="text" class="search-input" placeholder="Search data sources...">
+                    <div class="user-menu">
+                        <div class="user-avatar"></div>
+                        <span>Alex Chen</span>
+                    </div>
+                </div>
+            </header>
+
+            <div class="page-content">
+                <div class="page-header">
+                    <h1>Add Data Source</h1>
+                    <p>Connect external services to track and visualize your personal metrics</p>
+                </div>
+
+                <div id="successAlert" class="alert alert-success">
+                    ✅ Data source connected successfully!
+                </div>
+
+                <div id="manualEntryAlert" class="alert alert-success">
+                    ✅ Manual data entry added successfully!
+                </div>
+
+                <!-- Manual Entry Section -->
+                <div class="chart-panel" style="margin-bottom: 3rem;">
+                    <div class="panel-header">
+                        <h3 class="panel-title">✏️ Quick Manual Entry</h3>
+                        <p style="color: var(--text-secondary); font-size: 0.875rem; margin: 0;">Add data points manually without connecting an API</p>
+                    </div>
+                    
+                    <form id="manualEntryForm" onsubmit="handleManualEntry(event)">
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 1rem;">
+                            <div class="form-group" style="margin-bottom: 0;">
+                                <label class="form-label" for="metricCategory">Category</label>
+                                <select id="metricCategory" class="form-select" required>
+                                    <option value="">Select category...</option>
+                                    <option value="finance">💰 Finance</option>
+                                    <option value="fitness">🏃 Fitness</option>
+                                    <option value="productivity">💻 Productivity</option>
+                                    <option value="health">❤️ Health</option>
+                                    <option value="mood">😊 Mood</option>
+                                    <option value="sleep">😴 Sleep</option>
+                                    <option value="custom">🔧 Custom</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group" style="margin-bottom: 0;">
+                                <label class="form-label" for="metricName">Metric Name</label>
+                                <input type="text" id="metricName" class="form-input" placeholder="e.g., Coffee Purchase" required>
+                            </div>
+
+                            <div class="form-group" style="margin-bottom: 0;">
+                                <label class="form-label" for="metricValue">Value</label>
+                                <input type="number" step="0.01" id="metricValue" class="form-input" placeholder="e.g., 5.50" required>
+                            </div>
+
+                            <div class="form-group" style="margin-bottom: 0;">
+                                <label class="form-label" for="metricDate">Date</label>
+                                <input type="date" id="metricDate" class="form-input" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group" style="margin-bottom: 1rem;">
+                            <label class="form-label" for="metricNotes">Notes (Optional)</label>
+                            <input type="text" id="metricNotes" class="form-input" placeholder="Add a note about this entry...">
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">➕ Add Entry</button>
+                    </form>
+                </div>
+
+                <div class="info-box">
+                    <h3>💡 Popular Integrations</h3>
+                    <ul>
+                        <li>Fitness trackers sync your activity, heart rate, and sleep data</li>
+                        <li>Productivity tools monitor your work hours and focus time</li>
+                        <li>Finance APIs track spending patterns and savings goals</li>
+                        <li>Custom APIs let you bring in any data via REST endpoints</li>
+                    </ul>
+                </div>
+
+                <!-- Source Cards Grid -->
+                <div class="source-grid">
+                    <div class="source-card" onclick="openModal('fitbit')">
+                        <div class="source-icon">🏃</div>
+                        <h3>Fitbit</h3>
+                        <p>Track steps, heart rate, calories, and sleep quality from your Fitbit device.</p>
+                        <span class="badge badge-popular">Popular</span>
+                    </div>
+
+                    <div class="source-card" onclick="openModal('strava')">
+                        <div class="source-icon">🚴</div>
+                        <h3>Strava</h3>
+                        <p>Import running and cycling activities, routes, and performance metrics.</p>
+                        <span class="badge badge-popular">Popular</span>
+                    </div>
+
+                    <div class="source-card" onclick="openModal('github')">
+                        <div class="source-icon">💻</div>
+                        <h3>GitHub</h3>
+                        <p>Monitor your coding activity, commits, pull requests, and contributions.</p>
+                        <span class="badge badge-new">New</span>
+                    </div>
+
+                    <div class="source-card" onclick="openModal('googlesheets')">
+                        <div class="source-icon">📋</div>
+                        <h3>Google Sheets</h3>
+                        <p>Pull data from spreadsheets for custom tracking and visualization.</p>
+                    </div>
+
+                    <div class="source-card" onclick="openModal('todoist')">
+                        <div class="source-icon">✅</div>
+                        <h3>Todoist</h3>
+                        <p>Track task completion rates, productivity streaks, and project progress.</p>
+                    </div>
+
+                    <div class="source-card" onclick="openModal('spotify')">
+                        <div class="source-icon">🎵</div>
+                        <h3>Spotify</h3>
+                        <p>Analyze listening habits, favorite genres, and music discovery trends.</p>
+                    </div>
+
+                    <div class="source-card" onclick="openModal('rescuetime')">
+                        <div class="source-icon">⏰</div>
+                        <h3>RescueTime</h3>
+                        <p>Monitor screen time, app usage, and productivity scores automatically.</p>
+                    </div>
+
+                    <div class="source-card" onclick="openModal('myfitnesspal')">
+                        <div class="source-icon">🍎</div>
+                        <h3>MyFitnessPal</h3>
+                        <p>Track nutrition, calorie intake, macros, and meal logging data.</p>
+                    </div>
+
+                    <div class="source-card" onclick="openModal('custom')">
+                        <div class="source-icon">🔧</div>
+                        <h3>Custom API</h3>
+                        <p>Connect any REST API endpoint to import custom data sources.</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Modal -->
+    <div id="configModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title" id="modalTitle">Configure Data Source</h2>
+                <button class="close-btn" onclick="closeModal()">&times;</button>
+            </div>
+
+            <form id="sourceForm" onsubmit="handleSubmit(event)">
+                <div class="form-group">
+                    <label class="form-label" for="sourceName">Connection Name</label>
+                    <input type="text" id="sourceName" class="form-input" placeholder="My Fitbit Data" required>
+                    <div class="form-help">Give this connection a memorable name</div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="apiKey">API Key / Token</label>
+                    <input type="password" id="apiKey" class="form-input" placeholder="Enter your API key" required>
+                    <div class="form-help">Your credentials are encrypted and stored securely</div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="refreshRate">Data Refresh Rate</label>
+                    <select id="refreshRate" class="form-select">
+                        <option value="5">Every 5 minutes</option>
+                        <option value="15" selected>Every 15 minutes</option>
+                        <option value="30">Every 30 minutes</option>
+                        <option value="60">Every hour</option>
+                        <option value="1440">Once per day</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="dataTypes">Data to Sync</label>
+                    <div style="display: flex; flex-direction: column; gap: 0.75rem; margin-top: 0.5rem;">
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="steps" checked>
+                            <label for="steps">Daily Steps</label>
+                        </div>
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="heartrate" checked>
+                            <label for="heartrate">Heart Rate</label>
+                        </div>
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="sleep" checked>
+                            <label for="sleep">Sleep Data</label>
+                        </div>
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="calories">
+                            <label for="calories">Calories Burned</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="manualData">Manual Data Entry (Optional)</label>
+                    <textarea id="manualData" class="form-textarea" placeholder='Enter custom data points in JSON format:
+[
+  {"date": "2024-10-27", "value": 8500, "metric": "steps"},
+  {"date": "2024-10-26", "value": 7200, "metric": "steps"}
+]'></textarea>
+                    <div class="form-help">Add custom data points manually in JSON format for one-time imports</div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="notes">Notes (Optional)</label>
+                    <textarea id="notes" class="form-textarea" placeholder="Add any additional notes about this connection..."></textarea>
+                </div>
+
+                <div class="btn-group">
+                    <button type="submit" class="btn btn-primary">Connect Source</button>
+                    <button type="button" class="btn btn-secondary" onclick="closeModal()">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="addSource.js"></script>
+</body>
+</html>
