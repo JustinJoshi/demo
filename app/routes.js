@@ -74,7 +74,7 @@ module.exports = function (app, passport, db) {
     db.collection('messages').save({ name: req.body.name, msg: req.body.msg, thumbUp: 0, thumbDown: 0 }, (err, result) => {
       if (err) return console.log(err)
       console.log('saved to database')
-      res.redirect('/indexCopy')
+      res.redirect('/dashboard')
     })
   })
 
@@ -128,7 +128,7 @@ module.exports = function (app, passport, db) {
 
   // process the signup form
   app.post('/signup', passport.authenticate('local-signup', {
-    successRedirect: '/profile', // redirect to the secure profile section
+    successRedirect: '/dashboard', // redirect to the secure profile section
     failureRedirect: '/signup', // redirect back to the signup page if there is an error
     failureFlash: true // allow flash messages
   }));
@@ -146,7 +146,7 @@ module.exports = function (app, passport, db) {
     user.local.email = undefined;
     user.local.password = undefined;
     user.save(function (err) {
-      res.redirect('/profile');
+      res.redirect('/dashboard');
     });
   });
 

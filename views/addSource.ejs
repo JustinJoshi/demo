@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,9 +9,11 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="addSource.css">
-    
+
 </head>
+
 <body>
+    <!-- style & layout by claude -->
     <div class="app-container">
         <!-- Sidebar -->
         <aside class="sidebar">
@@ -20,7 +23,7 @@
                     <span>MyGraf</span>
                 </div>
             </div>
-            
+
             <nav class="sidebar-nav">
                 <div class="nav-section">
                     <div class="nav-section-title">Main</div>
@@ -37,7 +40,7 @@
                         <span>Analytics</span>
                     </a>
                 </div>
-                
+
                 <div class="nav-section">
                     <div class="nav-section-title">Data Sources</div>
                     <a href="#" class="nav-item">
@@ -49,7 +52,7 @@
                         <span>Add Source</span>
                     </a>
                 </div>
-                
+
                 <div class="nav-section">
                     <div class="nav-section-title">Settings</div>
                     <a href="#" class="nav-item">
@@ -74,7 +77,7 @@
                     <span>/</span>
                     <span>Add Source</span>
                 </div>
-                
+
                 <div class="top-nav-right">
                     <input type="text" class="search-input" placeholder="Search data sources...">
                     <div class="user-menu">
@@ -102,11 +105,13 @@
                 <div class="chart-panel" style="margin-bottom: 3rem;">
                     <div class="panel-header">
                         <h3 class="panel-title">✏️ Quick Manual Entry</h3>
-                        <p style="color: var(--text-secondary); font-size: 0.875rem; margin: 0;">Add data points manually without connecting an API</p>
+                        <p style="color: var(--text-secondary); font-size: 0.875rem; margin: 0;">Add data points
+                            manually without connecting an API</p>
                     </div>
-                    
+
                     <form id="manualEntryForm" onsubmit="handleManualEntry(event)">
-                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 1rem;">
+                        <div
+                            style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 1rem;">
                             <div class="form-group" style="margin-bottom: 0;">
                                 <label class="form-label" for="metricCategory">Category</label>
                                 <select id="metricCategory" class="form-select" required>
@@ -123,12 +128,14 @@
 
                             <div class="form-group" style="margin-bottom: 0;">
                                 <label class="form-label" for="metricName">Metric Name</label>
-                                <input type="text" id="metricName" class="form-input" placeholder="e.g., Coffee Purchase" required>
+                                <input type="text" id="metricName" class="form-input"
+                                    placeholder="e.g., Coffee Purchase" required>
                             </div>
 
                             <div class="form-group" style="margin-bottom: 0;">
                                 <label class="form-label" for="metricValue">Value</label>
-                                <input type="number" step="0.01" id="metricValue" class="form-input" placeholder="e.g., 5.50" required>
+                                <input type="number" step="0.01" id="metricValue" class="form-input"
+                                    placeholder="e.g., 5.50" required>
                             </div>
 
                             <div class="form-group" style="margin-bottom: 0;">
@@ -139,7 +146,8 @@
 
                         <div class="form-group" style="margin-bottom: 1rem;">
                             <label class="form-label" for="metricNotes">Notes (Optional)</label>
-                            <input type="text" id="metricNotes" class="form-input" placeholder="Add a note about this entry...">
+                            <input type="text" id="metricNotes" class="form-input"
+                                placeholder="Add a note about this entry...">
                         </div>
 
                         <button type="submit" class="btn btn-primary">➕ Add Entry</button>
@@ -285,7 +293,8 @@
 
                 <div class="form-group">
                     <label class="form-label" for="notes">Notes (Optional)</label>
-                    <textarea id="notes" class="form-textarea" placeholder="Add any additional notes about this connection..."></textarea>
+                    <textarea id="notes" class="form-textarea"
+                        placeholder="Add any additional notes about this connection..."></textarea>
                 </div>
 
                 <div class="btn-group">
@@ -297,4 +306,5 @@
     </div>
     <script src="addSource.js"></script>
 </body>
+
 </html>
