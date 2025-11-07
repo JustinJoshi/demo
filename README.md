@@ -2,9 +2,9 @@
 
 A full-stack personal metrics dashboard that helps you track and visualize data from multiple sources. Connect your favorite apps, manually enter data points, and see everything in one beautiful interface with real-time charts and analytics.
 
-**Link to project:** https://github.com/YourUsername/InvoiceIQ
+**Link to project:**  [InvoiceIQ Dashboard](https://invoiceiq.onrender.com/)
 
-[InvoiceIQ Dashboard](https://invoiceiq.onrender.com/)
+
 
 <img width="2559" height="1312" alt="2025-11-06_13-40" src="https://github.com/user-attachments/assets/12626edd-de81-4ce8-86a4-b4a066bd6970" />
 
