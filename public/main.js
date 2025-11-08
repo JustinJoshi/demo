@@ -103,10 +103,12 @@ async function makeChart() {
     const result = await response.json();
     console.log("RESULT FROM MONGODB", result);
 
+    //sort values from result
     let value = []
     Object.keys(result).forEach((e,i) => {
       value.push(result[i].value)
     })
+    
     //create chart
     new Chart(ctx, {
       type: 'line',
