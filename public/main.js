@@ -105,15 +105,21 @@ async function makeChart() {
 
     //sort values from result
     let value = []
-    Object.keys(result).forEach((e,i) => {
+    Object.keys(result).forEach((e, i) => {
       value.push(result[i].value)
     })
-    
+
+    //create array for lables from mongoDB data
+    let lables = []
+    Object.keys(result).forEach((e, i) => {
+      lables.push(result[i].date)
+    })
+
     //create chart
     new Chart(ctx, {
       type: 'line',
       data: {
-        labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+        labels: lables,
         datasets: [{
           label: `${result[0].category}`,
           data: value,
